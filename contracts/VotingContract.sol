@@ -32,5 +32,9 @@ contract Create{
         uint256 voteCount,
         address _address,
         string ipfs
-    )
+    );
+
+    address[] public candidateAddress;
+
+    
 }
