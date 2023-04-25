@@ -25,6 +25,12 @@ contract Create{
     } 
 
     event CandidateCreate{
-        
+        uint256 indexed candidateId,
+        string age,
+        string name,
+        string image,
+        uint256 voteCount,
+        address _address,
+        string ipfs
     }
 }
