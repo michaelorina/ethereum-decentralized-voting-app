@@ -10,5 +10,8 @@ contract Create{
 
     Counters.Counter public _voterId;
     Counters.Counter public _candidateId;
+
+    address public votingOrganizer;
+
     
 }
