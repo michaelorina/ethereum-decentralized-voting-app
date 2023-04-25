@@ -13,5 +13,8 @@ contract Create{
 
     address public votingOrganizer;
 
-    
+    //CANDIDATE FOR VOTING
+    struct Canditate {
+        
+    } 
 }
