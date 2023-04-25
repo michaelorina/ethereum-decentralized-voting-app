@@ -5,3 +5,6 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
 
+contract Create{
+    using Counters for Counters.Counter;
+}
