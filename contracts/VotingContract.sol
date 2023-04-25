@@ -36,5 +36,7 @@ contract Create{
 
     address[] public candidateAddress;
 
-    
+    mapping(address => Candidate) public candidates;
+
+    //END OF CANDIDATE DATA
 }
