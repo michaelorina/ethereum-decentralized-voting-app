@@ -24,7 +24,7 @@ contract Create{
         string ipfs;
     } 
 
-    event CandidateCreate{
+    event CandidateCreate(
         uint256 indexed candidateId,
         string age,
         string name,
@@ -32,5 +32,5 @@ contract Create{
         uint256 voteCount,
         address _address,
         string ipfs
-    }
+    )
 }
