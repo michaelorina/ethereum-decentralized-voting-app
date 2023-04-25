@@ -15,6 +15,12 @@ contract Create{
 
     //CANDIDATE FOR VOTING
     struct Canditate {
-        
+        uint256 candidateId;
+        string age;
+        string name;
+        string image;
+        uint256 voteCount;
+        address _address;
+        string ipfs;
     } 
 }
