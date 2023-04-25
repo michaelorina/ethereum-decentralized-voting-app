@@ -7,4 +7,8 @@ import "hardhat/console.sol";
 
 contract Create{
     using Counters for Counters.Counter;
+
+    Counters.Counter public _voterId;
+    Counters.Counter public _candidateId;
+    
 }
