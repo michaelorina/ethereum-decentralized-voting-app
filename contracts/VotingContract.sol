@@ -23,4 +23,8 @@ contract Create{
         address _address;
         string ipfs;
     } 
+
+    event CandidateCreate{
+        
+    }
 }
