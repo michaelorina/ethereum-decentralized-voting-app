@@ -39,4 +39,35 @@ contract Create{
     mapping(address => Candidate) public candidates;
 
     //END OF CANDIDATE DATA
+
+    //-------- VOTER DATA
+
+    address[] public votedVoters;
+
+    address[] public voterAddress;
+    mapping(address => Voter) public voters;
+
+    struct Voter {
+        uint256 voter_voterId;
+        string voter_name;
+        string voter_image;
+        address voter_address;
+        uint256 voter_allowed;
+        bool voter_voted;
+        uint256 voter_vote;
+        string ipfs;
+    }
+
+    event VoterCreated (
+        uint256 indexed voter_voterId,
+        string voter_name,
+        string voter_image,
+        address voter_address,
+        uint256 voter_allowed,
+        bool voter_voted,
+        uint256 voter_vote,
+        string ipfs
+    );
+
+    //---- END OF VOTER DATA
 }
