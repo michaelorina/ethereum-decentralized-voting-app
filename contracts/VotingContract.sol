@@ -70,4 +70,8 @@ contract Create{
     );
 
     //---- END OF VOTER DATA
+
+    constructor () {
+        votingOrganizer = msg.sender;
+    }
 }
