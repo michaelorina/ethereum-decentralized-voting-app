@@ -105,4 +105,8 @@ contract Create{
             _ipfs
         );
     }
+
+    function getCandidate() public view returns (address[] memory){
+        return candidateAddress;
+    }
 }
