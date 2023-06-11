@@ -165,3 +165,18 @@ contract Create{
             )
         }
 }
+
+fuction vote(adrss _candidateAdress, uint256 _candidateVoteId) external{
+    
+    Voter storage voter = voters[msg.sender];
+
+    require(!voter.voter_voted, "You have already voted!");
+    require(voter.voter_allowed != 0, "You have no right to vote");
+
+    voter.voter_voted = true;
+    voter.voter_vote _candidateVoteId;
+
+    votedVoters.push(msg.sender);
+    
+    candidate[_candidateAdress].voteCount += voter.voter_allowed;
+}
