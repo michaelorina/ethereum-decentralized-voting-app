@@ -199,6 +199,10 @@ function getVoterData (address _address) public view returns ( uint256, string m
         );
     }
 
-    function getVotedVoterList() public view returns (adress[] memory){
+function getVotedVoterList() public view returns (adress[] memory){
         return votedVoters;
-    }
+}
+
+function getvoterList() public view retuns (address[] memory){
+    return votersAddress;
+}
