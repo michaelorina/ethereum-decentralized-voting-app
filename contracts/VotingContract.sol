@@ -184,3 +184,17 @@ fuction vote(adrss _candidateAdress, uint256 _candidateVoteId) external{
 fuction getvoterlength() public view returns (uint256){
     return voterAdress.length;
 }
+
+function getVoterData (address _address) public view returns ( uint256, string memory, string memory, address, string memory, uint256 bool)
+    {
+        return (
+            voters[_adress].voter_voterId,
+            voters[_adress].voter_name,
+            voters[_adress].voter_image,
+            voters[_adress].voter_address,
+            voters[_adress].voter_ipfs,
+            voters[_adress].voter_allowed,
+            voters[_adress].voter_voted
+
+        );
+    }
