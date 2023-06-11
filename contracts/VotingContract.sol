@@ -44,7 +44,7 @@ contract Create{
 
     address[] public votedVoters;
 
-    address[] public voterAddress;
+    address[] public votersAddress;
     mapping(address => Voter) public voters;
 
     struct Voter {
@@ -55,7 +55,7 @@ contract Create{
         uint256 voter_allowed;
         bool voter_voted;
         uint256 voter_vote;
-        string ipfs;
+        string voter_ipfs;
     }
 
     event VoterCreated (
@@ -66,7 +66,7 @@ contract Create{
         uint256 voter_allowed,
         bool voter_voted,
         uint256 voter_vote,
-        string ipfs
+        string voter_ipfs
     );
 
     //---- END OF VOTER DATA
@@ -129,14 +129,14 @@ contract Create{
 
     ///------------ VOTER SECTION -----------
 
-    function voterRight(adress _adress, string memory _name, string memory _image, string memory _ipfs) 
+    function voterRight(address _address, string memory _name, string memory _image, string memory _ipfs) 
         public{
 
             require(votingOrganizer == msg.sender, "Only Organizer can crreater voter");
 
             _voterId.increment();
 
-            uint256 idNumber = _voterId.current()
+            uint256 idNumber = _voterId.current();
 
             Voter storage voter = voters[_address];
 
@@ -145,64 +145,65 @@ contract Create{
             voter.voter_allowed = 1;
             voter.voter_name = _name;
             voter.voter_image = _image;
-            voter.voter_address = _adress;
+            voter.voter_address = _address;
             voter.voter_voterId = idNumber;
             voter.voter_vote = 1000;
             voter.voter_voted = false;
             voter.voter_ipfs = _ipfs;
 
-            voterAddress.push(_address);
+            votersAddress.push(_address);
 
-            emit voterCreated(
+            emit VoterCreated(
                 idNumber,
                 _name,
                 _image,
-                _adress,
+                _address,
                 voter.voter_allowed,
-                voter.voter_vote,
+                voter.voter_voted,
                 voter.voter_vote,
                 _ipfs
-            )
+            );
         }
-}
 
-fuction vote(adrss _candidateAdress, uint256 _candidateVoteId) external{
-    
-    Voter storage voter = voters[msg.sender];
 
-    require(!voter.voter_voted, "You have already voted!");
-    require(voter.voter_allowed != 0, "You have no right to vote");
+    function vote(address _candidateAddress, uint256 _candidateVoteId) external {
+        
+        Voter storage voter = voters[msg.sender];
 
-    voter.voter_voted = true;
-    voter.voter_vote _candidateVoteId;
+        require(!voter.voter_voted, "You have already voted!");
+        require(voter.voter_allowed != 0, "You have no right to vote");
 
-    votedVoters.push(msg.sender);
-    
-    candidate[_candidateAdress].voteCount += voter.voter_allowed;
-}
+        voter.voter_voted = true;
+        voter.voter_vote = _candidateVoteId;
 
-fuction getvoterlength() public view returns (uint256){
-    return voterAdress.length;
-}
-
-function getVoterData (address _address) public view returns ( uint256, string memory, string memory, address, string memory, uint256 bool)
-    {
-        return (
-            voters[_adress].voter_voterId,
-            voters[_adress].voter_name,
-            voters[_adress].voter_image,
-            voters[_adress].voter_address,
-            voters[_adress].voter_ipfs,
-            voters[_adress].voter_allowed,
-            voters[_adress].voter_voted
-
-        );
+        votedVoters.push(msg.sender);
+        
+        candidates[_candidateAddress].voteCount += voter.voter_allowed;
     }
 
-function getVotedVoterList() public view returns (adress[] memory){
-        return votedVoters;
-}
+    function getvoterLength() public view returns (uint256){
+        return votersAddress.length;
+    }
 
-function getvoterList() public view retuns (address[] memory){
-    return votersAddress;
+    function getVoterData (address _address) public view returns ( uint256, string memory, string memory, address, string memory, uint256, bool)
+        {
+            return (
+                voters[_address].voter_voterId,
+                voters[_address].voter_name,
+                voters[_address].voter_image,
+                voters[_address].voter_address,
+                voters[_address].voter_ipfs,
+                voters[_address].voter_allowed,
+                voters[_address].voter_voted
+
+            );
+        }
+
+    function getVotedVoterList() public view returns (address[] memory){
+            return votedVoters;
+    }
+
+    function getvoterList() public view returns (address[] memory){
+        return votersAddress;
+    }
 }
