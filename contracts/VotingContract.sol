@@ -180,3 +180,7 @@ fuction vote(adrss _candidateAdress, uint256 _candidateVoteId) external{
     
     candidate[_candidateAdress].voteCount += voter.voter_allowed;
 }
+
+fuction getvoterlength() public view returns (uint256){
+    return voterAdress.length;
+}
