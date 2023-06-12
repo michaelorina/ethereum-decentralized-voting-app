@@ -8,9 +8,10 @@ import Style from '../styles/index.module.css';
 import Card from "../components/Card/Card";
 import image from "../assets/candidate-1.jpg";
 
-const index = () => {
+const Home = () => {
+
   const {votingTitle} = useContext(VotingContext);
   return <div>{votingTitle}</div>;
 };
 
-export default index;
+export default Home;

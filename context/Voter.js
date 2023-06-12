@@ -19,6 +19,7 @@ export const VotingContext = React.createContext();
 export const VotingProvider = ({children}) => {
 
     const votingTitle = 'My First smart contract app';
+
     const router = useRouter();
     const [currentAccount, setCurrentAccount] = useState('');
     const [candidateLength, setCandidateLength] = useState('');
@@ -36,7 +37,7 @@ export const VotingProvider = ({children}) => {
     const [voterArray, setVoterArray] = useState(pushVoter);
     const [voterLenght, setVoterLength] = useState('');
     const [voterAddress, setVoterAddress] = useState([]);
-    
+
 
     return (
         <VotingContext.Provider value={{votingTitle}}>

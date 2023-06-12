@@ -13,6 +13,7 @@ const MyApp = ({ Component, pageProps})=>(
             </div>
         </div>
     </VotingProvider>
+    
 );
 
 export default MyApp;
