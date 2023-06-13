@@ -51,8 +51,22 @@ export const VotingProvider = ({children}) => {
             setError("Please Install Metamask & Connect, Reload");
         }
     };
+
+    // ---- CONNECT WALLET
+
+    const connectWallet = async() => {
+
+        if (!window.ethereum) return setError("Please Install Metamask");
+
+        const account = await window.ethereum.request({
+            method: "eth_requestAccounts",
+        });
+
+        setCurrentAccount(account[0]);
+
+    }
     return (
-        <VotingContext.Provider value={{votingTitle, checkIfWalletIsConnected}}>
+        <VotingContext.Provider value={{votingTitle, checkIfWalletIsConnected, connectWallet}}>
             {children}
         </VotingContext.Provider>
     ); 
