@@ -39,7 +39,7 @@ const allowedVoters = () =>{
   return (
     <div className={Style.createVoter}>
       <div>
-        {fileUrl && (
+        {!fileUrl && (
           <div className={Style.voterInfo}>
             <img src={fileUrl} alt="Voter  Image" />
             <div className={Style.voterInfo_paragraph}>
@@ -120,6 +120,20 @@ const allowedVoters = () =>{
           <div className={Style.Button}>
             <Button btnName="Authorized Voter" handleClick={() => {}}/>
           </div>
+        </div>
+      </div>
+
+      {/* /////////////////// */}
+      <div className={Style.createdVoter}>
+        <div className={Style.createdVoter_info}>
+          <Image src={Image.creator} alt="user Profile"/>
+          <p>Notice For User</p>
+          <p>
+            Organizer <span>0x9329389...</span>
+          </p>
+          <p>
+            Only organizer of the voting contract can create voter for election
+          </p>
         </div>
       </div>
     </div>

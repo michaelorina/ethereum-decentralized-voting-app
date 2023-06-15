@@ -1,0 +1,70 @@
+.createVoter{
+    width: 95%;
+    margin: 0 auto;
+    margin-block: 2rem;
+    display: grid;
+
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 2rem;
+}
+
+.voterInfo{
+    position: absolute;
+    top: 12rem;
+    left: 3rem;
+    width: 15rem;
+    padding: 1 rem;
+    background-color: #231e39;
+    border-radius: 25px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.35);
+    color: #b3b8cd;
+    text-align: start;
+}
+
+.voterInfo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.35);
+}
+
+.voterInfo_paragraph{
+    background-color: #231e39;
+    border-radius: 25px;
+}
+
+.voter{
+    background-color: #231e39;
+    border-radius: 25px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.35);
+    color: #b3b8cd;
+    padding: 2rem;
+}
+
+.voter_container_box{
+    text-align: center;
+    border: 1px dotted #9a02ac;
+    border-radius: 5px;
+}
+
+.voter_container_box p{
+    line-height: .5s;
+}
+
+.input_container{
+    padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;   
+}
+
+.Button{
+   text-align: end; 
+}
+
+/* //////MEDIA QUERY */
+@media screen and (max-width: 45em){
+    .createVoter{
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+}
