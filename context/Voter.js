@@ -35,7 +35,7 @@ export const VotingProvider = ({children}) => {
     //-------- VOTER SECTION
     const pushVoter = [];
     const [voterArray, setVoterArray] = useState(pushVoter);
-    const [voterLenght, setVoterLength] = useState('');
+    const [voterLength, setVoterLength] = useState('');
     const [voterAddress, setVoterAddress] = useState([]);
 
     //---- CONNECTING WALLET
@@ -174,6 +174,35 @@ const setCandidate = async(candidateForm, fileUrl, router)=>{
     } catch(error){
         setError("Error in creating voter");
     }
+};
+
+//-- GET CANDIDATE DATA
+const getnewCandidate = async()=>{
+    try {
+         //CONECTING SMART CONTRACT SECTION
+         const web3Modal = new Web3Modal();
+         const connection = await web3Modal.connect();
+         const provider = new ethers.providers.Web3Provider(connection);
+         const signer = provider.getSigner();
+         const contract = fetchContract(signer);
+         
+         //----- ALL CANDIDATE
+         const allCandidate = await contract.getCandidate();
+         console.log(allCandidate);
+
+         allCandidate.map(async (el) => {
+            const singleCandidateData = await contract.getCandidatedata(el);
+
+            pushCandidate.push(singleCandidateData);
+            candidateIndex.push(singleCandidateData[2].toNumber());
+         });
+
+         //------CANDIDATE LENGTH
+         const allCandidateLength = await contract.getCandidateLegth();
+         setCandidateLength(allCandidateLength.toNumber());
+    } catch (error) {
+        console.log(error);
+    }
 }
     return (
         <VotingContext.Provider value={{
@@ -183,7 +212,15 @@ const setCandidate = async(candidateForm, fileUrl, router)=>{
             uploadToIPFS,
             createVoter,
             giveVote,
-            setCandidate
+            setCandidate,
+            getnewCandidate,
+            error,
+            voterArray,
+            voterLength,
+            voterAddress,
+            currentAccount,
+            candidateLength,
+            candidateArray
             }}
         >
             {children}
