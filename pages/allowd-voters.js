@@ -7,7 +7,7 @@ import Image from 'next/image';
 //---INTERNAL IMPORTS
 import {VotingContext} from "../context/Voter";
 import Style from "../styles/allowdVoters.module.css";
-import images from "../assets";
+//import images from "../assets";
 import Button from "../components/Button/Button";
 import Input from "../components/Input/Input"; 
 
