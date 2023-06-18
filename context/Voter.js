@@ -109,14 +109,81 @@ export const VotingProvider = ({children}) => {
         }
     }
 
-    
+    //-------------- GET VOTER DATA
+try {
+    const getAllVoterData = async()=>{
+        const web3Modal = new Web3Modal();
+        const connection = await web3Modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        const contract = fetchContract(signer);
+
+        // VOTER LIST
+        const voterListData = await contract.getvoterList();
+        setVoterAddress(voterListData); 
+        
+        voterListData.map(async(eL)=>{
+            const singleVoterData = await contract.getVoterdata(eL);
+            pushCandidate.push(singleVoterData);
+        });
+
+        //VOTER LENGTH
+        const voterList = await contract.getVoterLenght();
+        setVoterLength(voterList.toNumber());
+    };
+} catch (error) {
+    setError("Something wrong in fetching data")
+}
+// useEffect(() => {
+//     getAllVoterData();
+// }, []);
+
+//------GIVE VOTE
+const giveVote = async(id) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+//--------- CANDIDATE SECTION------
+const setCandidate = async(candidateForm, fileUrl, router)=>{
+    try{
+        const {name, address, age} = formInput; 
+        
+        if(!name || !address || !age) 
+            return setError("Input data is missing");
+
+        //CONECTING SMART CONTRACT SECTION
+        const web3Modal = new Web3Modal();
+        const connection = await web3Modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        const contract = fetchContract(signer);
+        
+        const data = JSON.stringify({name, address, image: fileUrl, age});
+        const added = await client.add(data);
+
+        const url = `https://ipfs.infura.io/ipfs${added.path}`;
+        
+        const voter = await contract.setCandidate(address, age, name, fileUrl, ipfs);
+        voter.wait();
+
+        router.push("/");
+    } catch(error){
+        setError("Error in creating voter");
+    }
+}
     return (
         <VotingContext.Provider value={{
             votingTitle, 
             checkIfWalletIsConnected, 
             connectWallet, 
             uploadToIPFS,
-            createVoter
+            createVoter,
+            giveVote,
+            setCandidate
             }}
         >
             {children}
