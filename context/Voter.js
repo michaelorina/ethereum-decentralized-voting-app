@@ -136,7 +136,7 @@ try {
         
         voterListData.map(async(eL)=>{
             const singleVoterData = await contract.getVoterdata(eL);
-            pushCandidate.push(singleVoterData);
+            pushVoter.push(singleVoterData);
         });
 
         //VOTER LENGTH
@@ -227,6 +227,7 @@ const getnewCandidate = async()=>{
             giveVote,
             setCandidate,
             getnewCandidate,
+            getAllVoterData,
             error,
             voterArray,
             voterLength,
