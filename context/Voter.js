@@ -227,7 +227,6 @@ const getnewCandidate = async()=>{
             giveVote,
             setCandidate,
             getnewCandidate,
-            getAllVoterData,
             error,
             voterArray,
             voterLength,
