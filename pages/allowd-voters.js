@@ -39,7 +39,7 @@ const allowedVoters = () =>{
   return (
     <div className={Style.createVoter}>
       <div>
-        {!fileUrl && (
+        {fileUrl && (
           <div className={Style.voterInfo}>
             <img src={fileUrl} alt="Voter  Image" />
             <div className={Style.voterInfo_paragraph}>
@@ -101,7 +101,7 @@ const allowedVoters = () =>{
                   <p>Upload File: JPG, PNG, GIF, WEBM Max 10MB</p>
 
                   <div className={Style.voter_container_box_div_image}>
-                    <Image src={Image.creator} width={150} height={150} objectFit="contain" alt="File Upload"/>
+                    <Image src={Image.upload} width={150} height={150} objectFit="contain" alt="File Upload"/>
                   </div>
                   <p>Drag & Drop File</p>
                   <p>or Browse Media on your device</p>
