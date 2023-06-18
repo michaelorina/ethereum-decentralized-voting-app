@@ -77,9 +77,48 @@ export const VotingProvider = ({children}) => {
         } catch (error) {
             setError("Error Uploading file to IPFS")
         }
+    };
+
+    //---------- CREATE VOTER
+
+    const createVoter = async(formInput, fileUrl, router)=>{
+        try{
+            const {name, address, position} = formInput; 
+            
+            if(!name || !address || !position) 
+                return setError("Input data is missing");
+
+            //CONECTING SMART CONTRACT SECTION
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            const signer = provider.getSigner();
+            const contract = fetchContract(signer);
+            
+            const data = JSON.stringify({name, address, position, image: fileUrl});
+            const added = await client.add(data);
+
+            const url = `https://ipfs.infura.io/ipfs${added.path}`;
+            
+            const voter = await contract.voterRight(address, name, url, fileUrl);
+            voter.wait();
+
+            router.push("/voterList");
+        } catch(error){
+            setError("Error in creating voter");
+        }
     }
+
+    
     return (
-        <VotingContext.Provider value={{votingTitle, checkIfWalletIsConnected, connectWallet, uploadToIPFS}}>
+        <VotingContext.Provider value={{
+            votingTitle, 
+            checkIfWalletIsConnected, 
+            connectWallet, 
+            uploadToIPFS,
+            createVoter
+            }}
+        >
             {children}
         </VotingContext.Provider>
     ); 

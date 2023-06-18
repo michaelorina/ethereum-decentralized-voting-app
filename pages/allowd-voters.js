@@ -20,7 +20,7 @@ const allowedVoters = () =>{
   });
 
   const router = useRouter();
-  const {uploadToIPFS} = useContext(VotingContext);
+  const {uploadToIPFS, createVoter} = useContext(VotingContext);
 
   //-- --- VOTERS IMAGE DROP
   const onDrop = useCallback(async(acceptedFil) => {
@@ -118,7 +118,7 @@ const allowedVoters = () =>{
           <Input inputType="text" title="Position" placeholder="Voter Position" handleClick={(e) => setFormInput({...formInput, position: e.target.value})}/>
           
           <div className={Style.Button}>
-            <Button btnName="Authorized Voter" handleClick={() => {}}/>
+            <Button btnName="Authorized Voter" handleClick={() => {createVoter(formInput, fileUrl, router)}}/>
           </div>
         </div>
       </div>
