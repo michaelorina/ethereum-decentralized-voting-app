@@ -79,6 +79,18 @@ export const VotingProvider = ({children}) => {
         }
     };
 
+    //----UPLOAD TO IPFS VOTER IMAGE
+    const uploadToIPFSCandidate = async (file) => {
+        try {
+            const added = await client.add({content: file});
+
+            const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+            return url;
+        } catch (error) {
+            setError("Error Uploading file to IPFS")
+        }
+    };
+
     //---------- CREATE VOTER
 
     const createVoter = async(formInput, fileUrl, router)=>{
@@ -134,9 +146,6 @@ try {
 } catch (error) {
     setError("Something wrong in fetching data")
 }
-// useEffect(() => {
-//     getAllVoterData();
-// }, []);
 
 //------GIVE VOTE
 const giveVote = async(id) => {
@@ -167,8 +176,8 @@ const setCandidate = async(candidateForm, fileUrl, router)=>{
 
         const url = `https://ipfs.infura.io/ipfs${added.path}`;
         
-        const voter = await contract.setCandidate(address, age, name, fileUrl, ipfs);
-        voter.wait();
+        const candidate = await contract.setCandidate(address, age, name, fileUrl, ipfs);
+        candidate.wait();
 
         router.push("/");
     } catch(error){
@@ -188,7 +197,6 @@ const getnewCandidate = async()=>{
          
          //----- ALL CANDIDATE
          const allCandidate = await contract.getCandidate();
-         console.log(allCandidate);
 
          allCandidate.map(async (el) => {
             const singleCandidateData = await contract.getCandidatedata(el);
@@ -204,6 +212,11 @@ const getnewCandidate = async()=>{
         console.log(error);
     }
 }
+
+// useEffect(() => {
+//     getnewCandidate();
+// }, []);
+
     return (
         <VotingContext.Provider value={{
             votingTitle, 
@@ -220,7 +233,8 @@ const getnewCandidate = async()=>{
             voterAddress,
             currentAccount,
             candidateLength,
-            candidateArray
+            candidateArray,
+            uploadToIPFSCandidate
             }}
         >
             {children}
