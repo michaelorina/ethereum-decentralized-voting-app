@@ -1,0 +1,21 @@
+.section {
+    width: 100%;
+    padding: 4;
+    background-color: #9A616D; 
+    border-radius: .5rem .5rem 0 0;
+}
+
+.card{
+    border-radius: 1rem;
+}
+.img_fluid{
+    border-radius: 1rem 0 0 1rem;
+}
+.i{
+    color: #ff6219;
+    margin-inline-end: 0.75rem;
+
+}
+.l1{
+    margin-left: 0px;
+}
