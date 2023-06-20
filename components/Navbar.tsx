@@ -1,7 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 
 const NavBar = () => {
-    const {connectWallet, login} = useAuth()
+    const {connectWallet, login, logout} = useAuth()
 
     return(
         <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column shadow-lg bg-body rounded">
@@ -15,6 +15,7 @@ const NavBar = () => {
                 <li><a href="/dashboard" className="nav-link px-2 link-danger">Vote</a></li>
                 <li><a href="/viewResults" className="nav-link px-2 link-danger">View Results</a></li>
                 <li><a href="/printResults" className="nav-link px-2 link-danger">Print Results</a></li>
+                <li><a href="/" className="nav-link px-2 link-danger" onClick={()=>logout()}>LogOut</a></li>
                 </ul>
 
                 <div className="col-md-4 text-end">
