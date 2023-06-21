@@ -30,11 +30,11 @@ const Login = () => {
     <div>
     <section className="w-100 p-5 bg-danger rounded">
     <div className="row d-flex justify-content-center">
-      <div className="col-12">
+      <div className="col-14">
         <div className="card rounded-lg">
           <div className="row g-0">
             <div className="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" className="rounded" width={500} height={600}/>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" className="img-fluid rounded"/>
             </div>
             <div className="col-md-6 col-lg-7 d-flex align-items-center">
                 <div className="card-body p-lg-5 py-0 text-black">
@@ -83,7 +83,7 @@ const Login = () => {
                   </Button> 
                 </div>
                 <div>
-                  <a href="/login" className="small text-muted py-4">Forgot password?</a>
+                  <a href="#!" className="small text-muted py-4">Forgot password?</a>
                 </div>
               </Form>
               </div>
@@ -92,7 +92,46 @@ const Login = () => {
       </div>
       </div>
       </div>
-    </section>
+      </section>
+    {/* <section className="w-100 p-5 bg-danger rounded">
+      <div className="row d-flex justify-content-center">
+        <div className="col-12">
+          <div className="card rounded-lg">
+            <div className="row g-0">
+              <div className="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" className="img-fluid rounded"/>
+              </div>
+              <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                <div className="card-body p-lg-5 py-0 text-black">
+                  <a href="/">
+                    <img src="./logo.png" alt="Logo" height={150} width={200} className="hover-zoom"/>
+                  </a>
+                  <form>
+
+                    <h5 className="fw-normal mx-auto p-4">Sign into your account!</h5>
+
+                    <div className="form-outline mb-2">
+                      <input type="email" className="form-control form-control-lg"/>
+                      <label className="form-label px-4">Email address</label>
+                    </div>
+                    <div className="form-outline mb-4">
+                      <input type="password" id="form2Example27" className="form-control form-control-lg"/>
+                      <label className="form-label px-4">Password</label>
+                    </div>
+                    <div className="pt-1 mb-4">
+                      <button className="btn btn-danger text-center" type="button">Login</button>
+                    </div>
+                    <div>
+                      <a href="#!" className="small text-muted py-5">Forgot password?</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> */}
 
 </div>
   )
