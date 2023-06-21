@@ -61,8 +61,19 @@ export const AuthContextProvider = ({
     });
     setCurrentAccount(account[0]);
   }
+  const checkIfWalletIsConnected = async()=>{
+    if (!window.ethereum) return setError("Please Install Metamask");
+
+    const account = await window.ethereum.request({method: "eth_accounts"});
+
+    if(account.length){
+        setCurrentAccount(account[0]);
+    }else{
+        setError("Please Install Metamask & Connect, Reload");
+    }
+};
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout , connectWallet }}>
+    <AuthContext.Provider value={{ user, login, signup, logout , connectWallet, checkIfWalletIsConnected }}>
       {loading ? null : children}
     </AuthContext.Provider>
   )

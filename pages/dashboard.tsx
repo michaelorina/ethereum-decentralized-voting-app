@@ -12,7 +12,7 @@ const dashboard = () => {
                   <div className="row py-lg-5">
                      <div className="col-lg-6 col-md-8 mx-auto">
                         <h1 className="fw-light">Blockchain-Based Voting System</h1>
-                        <p className="lead text-muted">Kenya Airways, A leading and Foward thinking organization, adopts a cutting-edge technology for improved governance</p>
+                        <p className="lead text-muted">Kenya Airways, A leading and Forward thinking organization, adopts a cutting-edge technology for improved governance</p>
                      </div> 
                 </div>
                 </section>

@@ -1,7 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 
 const NavBar = () => {
-    const {connectWallet, login, logout} = useAuth()
+    const {connectWallet, login, logout, checkIfWalletIsConnected} = useAuth()
 
     return(
         <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column shadow-lg bg-body rounded">
@@ -12,7 +12,7 @@ const NavBar = () => {
                 </a>
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" className="nav-link px-2 link-danger ">Home</a></li>
-                <li><a href="/dashboard" className="nav-link px-2 link-danger">Vote</a></li>
+                <li><a href="/vote" className="nav-link px-2 link-danger" onClick={() => connectWallet()}>Vote</a></li>
                 <li><a href="/viewResults" className="nav-link px-2 link-danger">View Results</a></li>
                 <li><a href="/printResults" className="nav-link px-2 link-danger">Print Results</a></li>
                 <li><a href="/" className="nav-link px-2 link-danger" onClick={()=>logout()}>LogOut</a></li>

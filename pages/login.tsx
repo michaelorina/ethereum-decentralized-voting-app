@@ -13,7 +13,7 @@ const Login = () => {
     email: '',
     password: '',
   })
-
+  
   const handleLogin = async (e: any) => {
     e.preventDefault()
 
@@ -28,16 +28,10 @@ const Login = () => {
 
   return (
     <div>
-    <section className="w-100 p-5 bg-danger rounded">
-    <div className="row d-flex justify-content-center">
-      <div className="col-14">
-        <div className="card rounded-lg">
-          <div className="row g-0">
-            <div className="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp" alt="login form" className="img-fluid rounded"/>
-            </div>
-            <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                <div className="card-body p-lg-5 py-0 text-black">
+    <section className="w-100 p-4 bg-danger rounded">
+        <div className="row d-flex rounded-lg">
+            <div className="d-flex align-items-center">
+                <div className="card mx-auto p-4 text-black">
                   <div className="d-flex justify-content-around align-items-center">
                     <h1>Login</h1>
                     <a href="/">
@@ -88,9 +82,6 @@ const Login = () => {
               </Form>
               </div>
               </div>
-      </div>
-      </div>
-      </div>
       </div>
       </section>
     {/* <section className="w-100 p-5 bg-danger rounded">

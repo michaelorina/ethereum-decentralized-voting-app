@@ -6,7 +6,7 @@ import NavBar from "../components/Navbar";
 
 
 const Home = () =>{
-  const {connectWallet, login} = useAuth()
+  
   return (
     <div >
       <NavBar/>
