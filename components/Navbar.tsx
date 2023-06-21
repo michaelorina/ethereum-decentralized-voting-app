@@ -20,8 +20,7 @@ const NavBar = () => {
 
                 <div className="col-md-4 text-end">
                 <a href="/login"><button type="button" className="btn btn-outline-danger me-2">Login</button></a>
-                <a href="/signup"><button type="button" className="btn btn-danger me-2">Sign-Up</button></a>
-                <button type="button" className="btn btn-outline-danger" onClick={() => connectWallet()}>Connect Wallet</button>
+                <button type="button" className="btn btn-danger" onClick={() => connectWallet()}>Connect Wallet</button>
                 </div>
             </header>
         </div>

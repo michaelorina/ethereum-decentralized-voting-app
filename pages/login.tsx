@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <div>
-    <section className="w-100 p-4 bg-danger rounded">
+    <section className=" p-4 bg-danger rounded">
         <div className="row d-flex rounded-lg">
             <div className="d-flex align-items-center">
                 <div className="card mx-auto p-4 text-black">
